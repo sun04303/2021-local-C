@@ -1,0 +1,735 @@
+/* 초기화 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul, li {list-style: none;}
+
+input:focus, select:focus {outline: none;}
+
+summary {
+    outline: none;
+    padding: 1rem;
+    display: block;
+    background: #fff;
+    padding-left: 2.2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+summary:before {
+    content: '';
+    border-width: .4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent #000;
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: .2rem 50%;
+    transition: .25s transform ease;
+}
+
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
+
+.chk {color: rgb(255, 136, 0);}
+
+/* 헤더 */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+header > div {
+    position: relative;
+}
+
+header .box {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+header .logo img {
+    width: 220px;
+    height: 50px;
+}
+
+header .menu {
+    width: 63%;
+    height: 54px;
+}
+
+header .menu > ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .menu a {
+    display: block ;
+    color: #000;
+}
+
+header .one {
+    font-weight: bold;
+}
+
+header .menu > ul > li {
+    width: 18%;
+    text-align: center;
+    line-height: 54px;
+}
+
+header .menu > ul > li:hover {
+    background: #000;
+}
+
+header .menu > ul > li:hover > a {
+    color: #fff;
+}
+
+header .menu > ul > li:hover .sub {
+    opacity: 1;
+    transition: .5s;
+    visibility: visible;
+    animation: details-show1 500ms ease;
+}
+
+@keyframes details-show1 {
+    from {
+        transform: translateY(-10%);
+    }
+}
+
+header .menu .sub {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 5;
+    background: #eee;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+header .menu .sub li:first-child:nth-last-child(2),
+header .menu .sub li:first-child:nth-last-child(2) ~ li {width: 50%;}
+
+header .menu .sub li:first-child:nth-last-child(3),
+header .menu .sub li:first-child:nth-last-child(3) ~ li {width: 33.33%;}
+
+header .menu .sub .dsub:first-child:nth-last-child(3),
+header .menu .sub .dsub:first-child:nth-last-child(3) ~ li {height: 270px;}
+
+header .menu .sub li:first-child:nth-last-child(5),
+header .menu .sub li:first-child:nth-last-child(5) ~ li {width: 20%; height: 216px;}
+
+header .menu .sub li:first-child:nth-last-child(8),
+header .menu .sub li:first-child:nth-last-child(8) ~ li {width: 12.5%;}
+
+header .menu .sub ul {
+    width: 60%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .menu .sub li {
+    border-left: 1px solid #000;
+}
+
+header .menu .sub li:last-child {
+    border-right: 1px solid #000;
+}
+
+header .menu .sub ul a:hover {
+    background: #000;
+    color: #fff;
+}
+
+header .menu .sub .dsub {
+    display: flex;
+    flex-direction: column;
+}
+
+header .user a {
+    font-size: 12px;
+    color: #898989;
+}
+
+header .ect select {
+    width: 100%;
+}
+
+/* 모바일 메뉴 */
+
+.mMenu {display: none;}
+
+.mMenu .menuIcon {
+    display: block;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    z-index: 15;
+}
+
+.mMenu .menuIcon span {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+    background: #000;
+    transition: .35s;
+}
+
+.mMenu .menuIcon span:nth-child(1) {top: 0;}
+.mMenu .menuIcon span:nth-child(2) {top: 50%; transform: translateY(-50%);}
+.mMenu .menuIcon span:nth-child(3) {bottom: 0;}
+
+#chk:checked ~ .menuIcon span:nth-child(1) {top: 50%; transform: translateY(-50%) rotate(45deg);}
+#chk:checked ~ .menuIcon span:nth-child(2) {opacity: 0;}
+#chk:checked ~ .menuIcon span:nth-child(3) {bottom: 50%; transform: translateY(50%) rotate(-45deg);}
+
+header .slider {
+    padding-top: 84px;
+    width: 320px;
+    height: 100%;
+    background: #ccc;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    z-index: 10;
+    transition: .3s;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+header details {
+    background: #eee;
+    margin-bottom: 5px;
+}
+
+header details a.mone {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+header details a.one {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+header details ul {
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+    background: #eee;
+}
+
+header details ul li {
+    margin-top: 10px;
+    padding-left: 1.1rem;
+}
+
+header details ul li details li {
+    padding-left: 2.2rem;
+}
+
+#chk:checked ~ div {right: 0; border-left: 1px solid #000;}
+
+@media screen and (max-width: 768px) {
+    .mMenu {display: block;}
+    .pcmenu{display: none;}
+}
+
+/* 비주얼 */
+
+.visual {
+    overflow: hidden;
+    height: 700px;
+}
+
+.visual ul {
+    position: relative;
+    height: 100%;
+}
+
+.visual li {
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.visual p {
+    left: 10%;
+    top: 60%;
+    font-size: 18px;
+    position: absolute;
+    color: #fff;
+}
+
+.visual span {
+    font-size: 40px;
+}
+
+.visual li:nth-child(1) {animation: fade1 12s infinite;}
+.visual li:nth-child(2) {animation: fade2 12s infinite;}
+.visual li:nth-child(3) {animation: fade3 12s infinite;}
+
+@keyframes fade1 {
+    0% {opacity: 1;}
+    17% {opacity: 1;}
+    33% {opacity: 0;}
+    47% {opacity: 0;}
+    66% {opacity: 0;}
+    87% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes fade2 {
+    0% {opacity: 0;}
+    17% {opacity: 0;}
+    33% {opacity: 1;}
+    47% {opacity: 1;}
+    66% {opacity: 0;}
+    87% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+@keyframes fade3 {
+    0% {opacity: 0;}
+    17% {opacity: 0;}
+    33% {opacity: 0;}
+    47% {opacity: 0;}
+    66% {opacity: 1;}
+    87% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+/* 새소식 */
+
+input[type=radio] {display: none;}
+
+label[for^=noti] {
+    width: 10%;
+    border: 1px solid #000;
+    padding: 6px 12px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #555;
+    background: #ddd;
+    cursor: pointer;
+    text-align: center;
+}
+
+input[type=radio]:checked + label {
+    color: #333;
+    background: #fff;
+    border-bottom: none;
+}
+
+.news {
+    width: 100%;
+    min-height: 412px;
+    position: relative;
+}
+
+.news > div {
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+    position: absolute;
+}
+
+#notiA:checked ~ .notice,
+#notiB:checked ~ .asd,
+#notiC:checked ~ .qwe,
+#notiD:checked ~ .zxc {
+    transition: .5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+    label[for^=noti] {width: 25%;}
+    .news {margin-bottom: 60px;}
+}
+
+/* 팝업 */
+
+.popup .card {
+    border: none;
+    overflow: hidden;
+}
+
+.popup img {
+    height: 223px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.popup img:hover {
+    opacity: .5;
+    animation: updown 1s infinite;
+}
+
+@keyframes updown {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
+
+/* 유네스코 인류 무형유산 */
+
+.legacy > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.legacy .un {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(1px, 100%));
+    min-height: 192px;
+}
+
+.legacy .up {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(1px, 100%));
+    min-height: 152px;
+}
+
+.legacy > div > details {
+    border-right: 1px solid #fff;
+    user-select: none;
+}
+
+.legacy details summary {
+    background: #ddd;
+}
+
+.legacy details h5 {margin: 0;}
+
+.legacy details ul {padding-left: 2.2rem;}
+
+.legacy details > *:not(summary) {
+    animation: details-show 500ms ease;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+@keyframes details-show {
+    from {
+        transform: translateY(-100%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .legacy > div {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .legacy .un {
+        min-height: 112px;
+    }
+}
+
+/* 행사 */
+
+.event {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, minmax(160px, auto));
+    gap: 15px;
+}
+
+.event .card {overflow: hidden;}
+
+.event .card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.event .card img:hover {
+    cursor: pointer;
+    opacity: .5;
+    animation: updown 1s infinite;
+}
+
+.event .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+    .event {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* 배너 */
+
+.banner {
+    width: 1080px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .banner {width: 360px;}
+}
+
+.banner .box {
+    display: flex;
+    white-space: nowrap;
+    animation: banner 15s infinite;
+}
+
+.banner img {
+    width: 180px;
+    height: 50px;
+}
+
+@keyframes banner {
+    0% {transform: translateX(0);}
+    5% {transform: translateX(0);}
+    10% {transform: translateX(-180px);}
+    15% {transform: translateX(-180px);}
+    20% {transform: translateX(-360px);}
+    25% {transform: translateX(-360px);}
+    30% {transform: translateX(-540px);}
+    35% {transform: translateX(-540px);}
+    40% {transform: translateX(-720px);}
+    45% {transform: translateX(-720px);}
+    50% {transform: translateX(-900px);}
+    55% {transform: translateX(-900px);}
+    60% {transform: translateX(-1080px);}
+    65% {transform: translateX(-1080px);}
+    70% {transform: translateX(-1260px);}
+    75% {transform: translateX(-1260px);}
+    80% {transform: translateX(-1440px);}
+    85% {transform: translateX(-1440px);}
+    90% {transform: translateX(-1620px);}
+    95% {transform: translateX(-1620px);}
+    100% {transform: translateX(-1800px);}
+}
+
+/* 푸터 */
+
+footer {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    padding: 12px 0;
+}
+
+footer .box {
+    margin: 0 auto;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer img {
+    width: 220px;
+}
+
+footer .footer-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 무형문화제 현황 */
+
+.nm {cursor: pointer;}
+
+.status .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status .top .nav {display: flex; align-items: center;}
+
+.status .info {display: flex; justify-content: space-between; align-items: center;}
+
+.status .kind {display: flex; justify-content: space-between; width: 160px;}
+
+.status .kind > div {width: 50%; cursor: pointer;}
+
+.status .kind .list {border-left: 1px solid #000;}
+
+.status .total-info {display: flex;}
+
+.status .box .list {min-height: 588px;}
+
+.status .item .card {border: none;}
+
+.status .item img {width: 230px; height: 230px; object-fit: cover;}
+
+.status #pagination {display: flex; justify-content: center;}
+
+/* 연혁 */
+
+.history .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.history .top .nav {
+    display: flex;
+    align-items: center;
+}
+
+.history .tab-menu span {
+    font-weight: 700;
+    font-size: 20px;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    background-color: #f9f9f9;
+    color: #7c7c7c;
+    cursor: pointer;
+}
+
+.history .content .selY {
+    font-size: 30px;
+}
+
+.history .content .list .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history .content .list .item button {
+    padding: 0 10px;
+    border: 1px solid #000;
+}
+
+.history .content .list .item button:nth-child(1) {
+    background-color: #f9f9f9;
+}
+
+.history .content .list .item button:nth-child(2) {
+    background-color: #ff6262;
+    color: #fff;
+}
+
+.history .content .img img {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+}
+
+.sel {
+    border-bottom: none !important;
+    background: white !important;
+    color: #333 !important;
+}
+
+/* 전화번호 */
+
+.phone .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.phone .top .nav {
+    display: flex;
+    align-items: center;
+}
+
+.phone .tab-menu span {
+    font-weight: 400;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    background-color: #f9f9f9;
+    color: #7c7c7c;
+    cursor: pointer;
+}
+
+.phone .lists {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(15%, auto));
+}
+
+.phone .lists .item {
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 4px 8px;
+    justify-content: space-between;
+}
+
+/* 월간 공연 일정 */
+
+.month .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.month .top .nav {display: flex; align-items: center;}
+
+.month table {
+    display: flex;
+    justify-content: center;
+}
+
+.showItem {
+    border: 1px solid #000;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* 연간공연일정 */
+
+.year .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.year .top .nav {
+    display: flex;
+    align-items: center;
+}
+
+span.holy {font-size: 18px;color: #FF6C21;}
+span.blue {font-size: 18px;color: #0000FF;}
+span.black {font-size: 18px;color: #000000;}
